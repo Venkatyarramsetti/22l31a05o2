@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Shortener</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>URL Shortener</h1>
+            <p>Shorten your long URLs quickly and easily</p>
+        </header>
+
+        <main>
+            <div class="form-container">
+                <form id="urlForm">
+                    <div class="input-group">
+                        <label for="url">Enter Long URL:</label>
+                        <input type="url" id="url" name="url" required 
+                               placeholder="https://example.com/very/long/url">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="validity">Validity (minutes):</label>
+                        <input type="number" id="validity" name="validity" 
+                               value="30" min="1" max="1440">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="shortcode">Custom Shortcode (optional):</label>
+                        <input type="text" id="shortcode" name="shortcode" 
+                               pattern="[A-Za-z0-9]{3,20}" 
+                               placeholder="e.g., mylink123">
+                        <small>3-20 alphanumeric characters</small>
+                    </div>
+
+                    <button type="submit">Shorten URL</button>
+                </form>
+            </div>
+
+            <div id="result" class="hidden">
+                <h2>Your Shortened URL:</h2>
+                <div class="short-url-container">
+                    <input type="text" id="shortUrl" readonly>
+                    <button id="copyButton">Copy</button>
+                </div>
+                <div class="url-info">
+                    <p>Expires: <span id="expiry"></span></p>
+                    <p>Log ID: <span id="logId"></span></p>
+                </div>
+            </div>
+
+            <div id="error" class="hidden">
+                <p class="error-message"></p>
+            </div>
+        </main>
+
+        <div id="stats" class="hidden">
+            <h2>URL Statistics</h2>
+            <div class="stats-content">
+                <p>Total Clicks: <span id="totalClicks">0</span></p>
+                <div id="clicksList"></div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
